@@ -8,12 +8,24 @@ public class Solution {
             int value = A[i];
             int j = i - 1;
             while(j >= 0 && A[j] > value){
-                A[j] = value;
-                A[i] = A[j];
-                j += 1;
-                i += 1;
+                A[j] = A[i];      
+                A[i] = A[j];  
             }
-            A[j] = value;
+            j += 1;
+            i += 1;
+            A[j] = A[i];
+            if (A[j] < value) {             
+                A[j] = value;
+                A[i] = A[i];
+            }
+            else {
+                if (A[j] > value || i == A.length - 1 || A[i] < value) {
+                   A[i] = A[j];
+                   A[j] = A[i];
+                }
+            }
+            j += 1;
+            i += 1; 
         }
         printArray(A);
     }
